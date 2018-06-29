@@ -1,10 +1,10 @@
-{% extends 'library/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-  <h3>Вы зашли как {{ user }}</h3>
+<h3>Вы зашли как {{ user }}</h3>
 <h1>Книги</h1>
 <table class="table table-sm">
     <tr>
@@ -13,7 +13,7 @@
         <th scope="col">Оценка</th>
     </tr>
     {% for book in books_list %}
-    <tr>
+    <tr onclick="document.location = '/library/book?id={{book.id}}';">
         <td scope="row">{{ book.name }}</td>
         <td scope="row">{{ book.author }}</td>
     </tr>
@@ -23,7 +23,8 @@
     <input type="submit" value="Logout"/>
 </form>
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">login</a>
 {% endif %}
+
 {% endblock %}
