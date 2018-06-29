@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action='.' method='post'>
+<form method='post'>
     {% csrf_token %}
     <label for="username">Логин:</label>
     <input type="text" name="username" value="" id="username">
@@ -13,7 +13,7 @@
     <input type="password" name="password" value="" id="password">
 
     <input type="submit" value="login"/>
-    <input type="hidden" name="next" value="{{ next|escape }}"/>
+    <!--<input type="hidden" name="next" value="{{ next|escape }}"/>-->
 </form>
 </body>
 </html>
