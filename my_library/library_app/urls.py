@@ -4,5 +4,5 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     re_path(r'^$', views.index, name='index'),
-    re_path(r'^book/',  views.book, name='book'),
+    path('<int:book_id>/',  views.book, name='book'),
 ]
