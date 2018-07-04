@@ -6,6 +6,11 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 
+import logging
+
+
+logger = logging.getLogger(__name__)
+
 
 @login_required(redirect_field_name='/library/')
 def index(request):
@@ -16,7 +21,28 @@ def index(request):
 
 @login_required(redirect_field_name='/library/')
 def book(request, book_id):
-    # book_id = request.GET.get('id', '')
     book = Book.objects.get(pk=book_id)
     context = {'book': book}
     return render(request, 'library/book.html', context)
+
+
+@login_required(redirect_field_name='/library/')
+def add_book(request, book_id):
+    book = Book.objects.get(pk=book_id)
+    user = request.user
+    logger.info(user)
+    user.books.add(book)
+    return redirect('/library/books/' + str(book_id) + '/')
+
+
+@login_required(redirect_field_name='/library/')
+def user(request):
+    return render(request, 'user/user.html')
+
+
+@login_required(redirect_field_name='/library/')
+def remove_book(request, book_id):
+    book = Book.objects.get(pk=book_id)
+    user = request.user
+    user.books.remove(book)
+    return redirect('/library/user/')

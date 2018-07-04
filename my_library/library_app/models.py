@@ -6,7 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Book(models.Model):
     name = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
-    users = models.ManyToManyField(User, blank=True)
+    users = models.ManyToManyField(User, blank=True, related_name='books')
     stars = models.IntegerField(validators=[MinValueValidator(0),
                                             MaxValueValidator(5)],
                                 blank=True,

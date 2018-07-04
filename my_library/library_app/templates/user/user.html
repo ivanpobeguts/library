@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h3>{{ user }}</h3>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    {% for book in user.books.all %}
+    <tr onclick="document.location = '/library/books/{{book.id}}';">
+        <td scope="row">{{ book.name }}</td>
+        <td scope="row">
+            <form action="{% url 'remove_book' book_id=book.id %}">
+                <input type="submit" value="Delete book"/>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!--<ul>-->
+    <!--{% for book in user.books.all %}-->
+    <!--<li>{{book.name}}</li>-->
+    <!--{% endfor %}-->
+<!--</ul>-->
+
+<form action="{% url 'logout' %}">
+    <input type="submit" value="Logout"/>
+</form>
+
+
+<form action="{% url 'index' %}">
+    <input type="submit" value="Home"/>
+</form>
+{% endblock %}

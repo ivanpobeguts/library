@@ -19,8 +19,8 @@
     </tr>
     {% endfor %}
 </table>
-<form action="/accounts/logout">
-    <input type="submit" value="Logout"/>
+<form action="{% url 'user_page' %}">
+    <input type="submit" value="{{ user }}"/>
 </form>
 {% else %}
 <p>You are not logged in</p>
