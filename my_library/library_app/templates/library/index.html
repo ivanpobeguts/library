@@ -5,6 +5,14 @@
 {% block content %}
 {% if user.is_authenticated %}
 <h3>Вы зашли как {{ user }}</h3>
+<form action="{% url 'user_page' %}">
+    <input type="submit" value="{{ user }}"/>
+</form>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">login</a>
+{% endif %}
+
 <h1>Книги</h1>
 <table border="1" cellpadding="8" cellspacing="0">
     <tr>
@@ -19,12 +27,5 @@
     </tr>
     {% endfor %}
 </table>
-<form action="{% url 'user_page' %}">
-    <input type="submit" value="{{ user }}"/>
-</form>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">login</a>
-{% endif %}
 
 {% endblock %}

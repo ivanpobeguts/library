@@ -12,21 +12,19 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-@login_required(redirect_field_name='/library/')
 def index(request):
     books_list = Book.objects.all()
     context = {'books_list': books_list}
     return render(request, 'library/index.html', context)
 
 
-@login_required(redirect_field_name='/library/')
 def book(request, book_id):
     book = Book.objects.get(pk=book_id)
     context = {'book': book}
     return render(request, 'library/book.html', context)
 
 
-@login_required(redirect_field_name='/library/')
+@login_required()
 def add_book(request, book_id):
     book = Book.objects.get(pk=book_id)
     user = request.user
@@ -35,12 +33,12 @@ def add_book(request, book_id):
     return redirect('/library/books/' + str(book_id) + '/')
 
 
-@login_required(redirect_field_name='/library/')
+@login_required()
 def user(request):
     return render(request, 'user/user.html')
 
 
-@login_required(redirect_field_name='/library/')
+@login_required()
 def remove_book(request, book_id):
     book = Book.objects.get(pk=book_id)
     user = request.user
