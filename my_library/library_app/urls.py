@@ -8,4 +8,5 @@ urlpatterns = [
     path('books/<int:book_id>/add/', views.add_book, name='add_book'),
     path('books/<int:book_id>/remove/', views.remove_book, name='remove_book'),
     path('user/', views.user, name='user_page'),
+    re_path(r'^accounts/signup/$', views.signup, name='signup'),
 ]

@@ -3,6 +3,7 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+
 <h3>{{ user }}</h3>
 
 <table border="1" cellpadding="8" cellspacing="0">
@@ -18,18 +19,12 @@
     {% endfor %}
 </table>
 
-<!--<ul>-->
-    <!--{% for book in user.books.all %}-->
-    <!--<li>{{book.name}}</li>-->
-    <!--{% endfor %}-->
-<!--</ul>-->
-
 <form action="{% url 'logout' %}">
     <input type="submit" value="Logout"/>
 </form>
 
-
 <form action="{% url 'index' %}">
     <input type="submit" value="Home"/>
 </form>
+
 {% endblock %}

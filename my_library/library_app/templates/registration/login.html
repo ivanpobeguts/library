@@ -5,12 +5,11 @@
 {% block content %}
 <form method='post'>
     {% csrf_token %}
-    <label for="username">Логин:</label>
-    <input type="text" name="username" value="" id="username">
-    <label for="password">Пароль:</label>
-    <input type="password" name="password" value="" id="password">
-
+    <!--<label for="username">Логин:</label>-->
+    <!--<input type="text" name="username" value="" id="username">-->
+    <!--<label for="password">Пароль:</label>-->
+    <!--<input type="password" name="password" value="" id="password">-->
+    {{ form.as_p }}
     <input type="submit" value="login"/>
-    <!--<input type="hidden" name="next" value="{{ next|escape }}"/>-->
 </form>
 {% endblock %}
